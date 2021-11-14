@@ -9,11 +9,13 @@ root = Tk()
 root.geometry("305x100")
 root.config(bg = "#6fa8dc")
 
+c_instruct_msg = ""
+pizzasprice = 0
 lastselected = ""
 total_price = 0
-delivery_charge = 3
-pizza_price = 8.5
-gourmet_price = 13.5
+DELIVERY_CHARGE = 3
+PIZZA_PRICE = 8.5
+GOURMET_PRICE = 13.5
 pizza_p = 0
 pizza_numb = 1
 lcv = 0
@@ -111,27 +113,24 @@ def next_1():
         "4",
         "5"
     ]
-    
-    pizza_numbox_msg = Label(secondmenu, text="Pizzas Ordered:", bg = "#6fa8dc", font=("candara 10 roman"))
-    pizza_numbox_msg.place(x=15, y=30)
     pizza_numbox = ttk.Combobox(secondmenu, value = nums, state = "readonly")
     pizza_numbox.current(0)
     pizza_numbox.bind("<<ComboboxSelected>>", comboclick)
-    pizza_numbox.place(x=110, y=30)
+    pizza_numbox.place(x=15, y=30)
    
-    button_1 = Button(secondmenu, text=pizzas[0], bg = "#cc4125", font=("candara 10 roman"), command=lambda: b1())
+    button_1 = Button(secondmenu, text="Hawiian", bg = "#cc4125", font=("candara 10 roman"), command=lambda: b1())
     button_1.place(x=23, y=60, width=125, height=37)
-    button_2 = Button(secondmenu, text=pizzas[1], bg = "#cc4125", font=("candara 10 roman"), command=lambda: b2())
+    button_2 = Button(secondmenu, text="Pepperoni", bg = "#cc4125", font=("candara 10 roman"), command=lambda: b2())
     button_2.place(x=203, y=60, width=125, height=37)
-    button_3 = Button(secondmenu, text=Pizzas[2], bg = "#cc4125", font=("candara 10 roman"), command=lambda: b3())
+    button_3 = Button(secondmenu, text="Cheese", bg = "#cc4125", font=("candara 10 roman"), command=lambda: b3())
     button_3.place(x=383, y=60, width=125, height=37)
-    button_4 = Button(secondmenu, text=Pizzas[3], bg = "#cc4125", font=("candara 10 roman"), command=lambda: b4())
+    button_4 = Button(secondmenu, text="Ham & Cheese", bg = "#cc4125", font=("candara 10 roman"), command=lambda: b4())
     button_4.place(x=23, y=105, width=125, height=37)
-    button_5 = Button(secondmenu, text=Pizzas[4], bg = "#cc4125", font=("candara 10 roman"), command=lambda: b5())
+    button_5 = Button(secondmenu, text="Beef & Onion", bg = "#cc4125", font=("candara 10 roman"), command=lambda: b5())
     button_5.place(x=203, y=105, width=125, height=37)
-    button_6 = Button(secondmenu, text=Pizzas[5], bg = "#cc4125", font=("candara 10 roman"), command=lambda: b6())
+    button_6 = Button(secondmenu, text="Vegetarian", bg = "#cc4125", font=("candara 10 roman"), command=lambda: b6())
     button_6.place(x=383, y=105, width=125, height=37)
-    button_7 = Button(secondmenu, text=Pizzas[6], bg = "#cc4125", font=("candara 10 roman"), command=lambda: b7())
+    button_7 = Button(secondmenu, text="Cheesy Garlic", bg = "#cc4125", font=("candara 10 roman"), command=lambda: b7())
     button_7.place(x=23, y=150, width=125, height=37)
     button_8 = Button(secondmenu, text="""Chicken, Bacon &
     Aioli""", bg = "#cc4125", font=("candara 10 roman"), command=lambda: b8())
@@ -139,9 +138,9 @@ def next_1():
     button_9 = Button(secondmenu, text="""Chicken &
     Camembert""", bg = "#cc4125", font=("candara 10 roman"), command=lambda: b9())
     button_9.place(x=383, y=150, width=125, height=37)
-    button_10 = Button(secondmenu, text=Pizzas[9], bg = "#cc4125", font=("candara 10 roman"), command=lambda: b10())
+    button_10 = Button(secondmenu, text="Buffalo Chicken", bg = "#cc4125", font=("candara 10 roman"), command=lambda: b10())
     button_10.place(x=23, y=195, width=125, height=37)
-    button_11 = Button(secondmenu, text=Pizzas[10], bg = "#cc4125", font=("candara 10 roman"), command=lambda: b11())
+    button_11 = Button(secondmenu, text="Italian Parmesan", bg = "#cc4125", font=("candara 10 roman"), command=lambda: b11())
     button_11.place(x=203, y=195, width=125, height=37)
     button_12 = Button(secondmenu, text="""Double Bacon
     Cheeseburger""", bg = "#cc4125", font=("candara 10 roman"), command=lambda: b12())
@@ -202,84 +201,84 @@ def b1():
     global lastselected
     pizzas_numb[0] = pizzas_numb[0] + 1
     pizzas_numbtotal[0] = pizzas_numbtotal[0] + 1
-    lastselected = pizzas[0]
+    lastselected = "Hawiian"
     calc()
  
 def b2():
     global lastselected
     pizzas_numb[1] = pizzas_numb[1] + 1
     pizzas_numbtotal[1] = pizzas_numbtotal[1] + 1
-    lastselected = pizzas[1]
+    lastselected = "Pepperoni"
     calc()
  
 def b3():
     global lastselected
     pizzas_numb[2] = pizzas_numb[2] + 1
     pizzas_numbtotal[2] = pizzas_numbtotal[2] + 1
-    lastselected = Pizzas[2]
+    lastselected = "Cheese"
     calc()
  
 def b4():
     global lastselected
     pizzas_numb[3] = pizzas_numb[3] + 1
     pizzas_numbtotal[3] = pizzas_numbtotal[3] + 1
-    lastselected = Pizzas[3]
+    lastselected = "Ham & Cheese"
     calc()
  
 def b5():
     global lastselected
     pizzas_numb[4] = pizzas_numb[4] + 1
     pizzas_numbtotal[4] = pizzas_numbtotal[4] + 1
-    lastselected = Pizzas[4]
+    lastselected = "Beef & Onion"
     calc()
  
 def b6():
     global lastselected
     pizzas_numb[5] = pizzas_numb[5] + 1
     pizzas_numbtotal[5] = pizzas_numbtotal[5] + 1
-    lastselected = Pizzas[5]
+    lastselected = "Vegetarian"
     calc()
  
 def b7():
     global lastselected
     pizzas_numb[6] = pizzas_numb[6] + 1
     pizzas_numbtotal[6] = pizzas_numbtotal[6] + 1
-    lastselected = Pizzas[6]
+    lastselected = "Cheesy Garlic"
     calc()
  
 def b8():
     global lastselected
     pizzas_numb[7] = pizzas_numb[7] + 1
     pizzas_numbtotal[7] = pizzas_numbtotal[7] + 1
-    lastselected = Pizzas[7]
+    lastselected = "Chicken, Bacon & Aioli"
     calc()
  
 def b9():
     global lastselected
     pizzas_numb[8] = pizzas_numb[8] + 1
     pizzas_numbtotal[8] = pizzas_numbtotal[8] + 1
-    lastselected = Pizzas[8]
+    lastselected = "Chicken & Camembert"
     calc()
  
 def b10():
     global lastselected
     pizzas_numb[9] = pizzas_numb[9] + 1
     pizzas_numbtotal[9] = pizzas_numbtotal[9] + 1
-    lastselected = Pizzas[9]
+    lastselected = "Buffalo Chicken"
     calc()
  
 def b11():
     global lastselected
     pizzas_numb[10] = pizzas_numb[10] + 1
     pizzas_numbtotal[10] = pizzas_numbtotal[10] + 1
-    lastselected = Pizzas[10]
+    lastselected = "Italian Parmesan"
     calc()
  
 def b12():
     global lastselected
     pizzas_numb[11] = pizzas_numb[11] + 1
     pizzas_numbtotal[11] = pizzas_numbtotal[11] + 1
-    lastselected = Pizzas[11]
+    lastselected = "Double Bacon Cheeseburger"
     calc()
  
  
@@ -317,35 +316,35 @@ def calc():
         button_11.config(state = "disabled")
         button_12.config(state = "disabled")
     if pizzas_numb[0] > 0:
-        o_display_text = o_display_text + pizzas[0] + "\n"
+        o_display_text = o_display_text + "Hawiian" + "\n"
         o_display.config(text="{}" .format (o_display_text))
         pizzas_numb[0] = 0
     elif pizzas_numb[1] > 0:
-        o_display_text = o_display_text + pizzas[1] + "\n"
+        o_display_text = o_display_text + "Pepperoni" + "\n"
         o_display.config(text="{}" .format (o_display_text))
         pizzas_numb[1] = 0
     elif pizzas_numb[2] > 0:
-        o_display_text = o_display_text + Pizzas[2] + "\n"
+        o_display_text = o_display_text + "Cheese" + "\n"
         o_display.config(text="{}" .format (o_display_text))
         pizzas_numb[2] = 0
     elif pizzas_numb[3] > 0:
-        o_display_text = o_display_text + Pizzas[3] + "\n"
+        o_display_text = o_display_text + "Ham & Cheese" + "\n"
         o_display.config(text="{}" .format (o_display_text))
         pizzas_numb[3] = 0
     elif pizzas_numb[4] > 0:
-        o_display_text = o_display_text + Pizzas[4] + "\n"
+        o_display_text = o_display_text + "Beef & Onion" + "\n"
         o_display.config(text="{}" .format (o_display_text))
         pizzas_numb[4] = 0
     elif pizzas_numb[5] > 0:
-        o_display_text = o_display_text + Pizzas[5] + "\n"
+        o_display_text = o_display_text + "Vegetarian" + "\n"
         o_display.config(text="{}" .format (o_display_text))
         pizzas_numb[5] = 0
     elif pizzas_numb[6] > 0:
-        o_display_text = o_display_text + Pizzas[6] + "\n"
+        o_display_text = o_display_text + "Cheesy Garlic" + "\n"
         o_display.config(text="{}" .format (o_display_text))
         pizzas_numb[6] = 0
     elif pizzas_numb[7] > 0:
-        o_display_text = o_display_text + Pizzas[7] + "\n"
+        o_display_text = o_display_text + "Chicken, Bacon & Aioli" + "\n"
         o_display.config(text="{}" .format (o_display_text))
         pizzas_numb[7] = 0
     elif pizzas_numb[8] > 0:
@@ -375,10 +374,9 @@ def next_2():
     global thirdmenu
     global yplace
     global menus
+    yplace = 0
     menus = 3
-    if delivery_ == 0:
-        yplace = 0
-    else:
+    if delivery_ == 1:
         yplace = 40
  
     thirdmenu = Toplevel()
@@ -420,6 +418,8 @@ def output():
     global pizza
     global pizzatext
     global yplace
+    global pizzasprice
+    global c_instruct_msg
     price = [0]*int(pizza_numb)
     pricetext = [0]*int(pizza_numb)
     pizzatext = [0]*int(pizza_numb)
@@ -433,9 +433,9 @@ def output():
             else:
                 pizzatext[pizzas_s - 1] = pizzas[lcv2] + ":"
             pizza[pizzas_s - 1] = "{}" .format (pizzatext[pizzas_s - 1])
-            price[pizzas_s - 1] = pizza_price * int(multi[pizzas_s - 1])
+            price[pizzas_s - 1] = PIZZA_PRICE * int(multi[pizzas_s - 1])
             pricetext[pizzas_s - 1] = str(price[pizzas_s - 1])
-            total_price = total_price + price[pizzas_s - 1]
+            pizzasprice = pizzasprice + price[pizzas_s - 1]
     for lcv2 in range(8,12):
         if pizzas_numbtotal[lcv2] > 0:
             pizzas_s = pizzas_s + 1
@@ -445,303 +445,266 @@ def output():
             else:
                 pizzatext[pizzas_s - 1] = pizzas[pizzas_s - 1] + ":"
             pizza[pizzas_s - 1] = "{}" .format (pizzatext[pizzas_s - 1])
-            price[pizzas_s - 1] = gourmet_price * int(multi[pizzas_s - 1])
+            price[pizzas_s - 1] = GOURMET_PRICE * int(multi[pizzas_s - 1])
             pricetext[pizzas_s - 1] = str(price[pizzas_s - 1])
-            total_price = total_price + price[pizzas_s - 1]
+            pizzasprice = pizzasprice + price[pizzas_s - 1]
     if delivery_ == 1:
-        total_price = total_price + delivery_charge
+        total_price = pizzasprice + DELIVERY_CHARGE
  
     if delivery_ == 0:
         totalprice_msg = "Total Cost:"
     else:
         totalprice_msg = "Pizzas Cost:"
  
-    if pizzas_s == 1:
-        pizza1 = Label(thirdmenu, text= "{}" .format (pizzatext[0]), bg = "#6fa8dc", font=("candara 10 roman"))
-        pizza1.place(x=140, y=(yplace+70), anchor="e")
-        price1 = Label(thirdmenu, text= "${}" .format (pricetext[0]), bg = "#6fa8dc", font=("candara 10 roman"))
-        price1.place(x=140, y=(yplace+70), anchor="w")
+    c_instruct_msg = c_instruct.get()
+    c_instruct_msg = re.sub("(.{25})", "\\1\n", c_instruct_msg, 0, re.DOTALL)
 
+    if pizzas_s == 1:
         if delivery_ == 0:
-            total_price_msg = Label(thirdmenu, text= "${}" .format (totalprice_msg), bg = "#6fa8dc", font=("candara 10 roman"))
-            total_price_msg.place(x=140, y=(yplace+90), anchor="e")
-            total_price_ = Label(thirdmenu, text= "${}" .format (total_price), bg = "#6fa8dc", font=("candara 10 roman"))
-            total_price_.place(x=140, y=(yplace+90), anchor="w")
-            c_instruct_msg = c_instruct.get()
-            c_instruct_msg = re.sub("(.{25})", "\\1\n", c_instruct_msg, 0, re.DOTALL)
-            customer_msg = Label(thirdmenu, text= "{}" .format (c_instruct_msg), bg = "#6fa8dc", font=("candara 10 roman"))
+            customer_msg = Label(thirdmenu, text= "{}" . format (c_instruct_msg), bg = "#6fa8dc", font=("candara 10 roman"))
             customer_msg.place(x=122, y=(yplace+110), anchor="n")
-            aao = Button(thirdmenu, text="""Accept Another
-            Order""", bg = "#cc4125", font=("candara 10 roman"), command=lambda: cancel_order())
-            aao.place(x=15, y=(yplace+170), width=105, height=37)
-            exit_ = Button(thirdmenu, text="Exit", bg = "#cc4125", font=("candara 10 roman"), command=lambda: quit())
-            exit_.place(x=230, y=(yplace+170), width=105, height=37, anchor = "ne")
             thirdmenu.geometry("245x222")
 
         else:
-            pizzas_price_msg = Label(thirdmenu, text= "{}" .format (totalprice_msg), bg = "#6fa8dc", font=("candara 10 roman"))
-            pizzas_price_msg.place(x=140, y=(yplace+90), anchor="e")
-            pizzasprice = total_price-3
-            pizzas_price_ = Label(thirdmenu, text= "${}" .format (pizzasprice), bg = "#6fa8dc", font=("candara 10 roman"))
-            pizzas_price_.place(x=140, y=(yplace+90), anchor="w")
             delivery_price = Label(thirdmenu, text= "+ $3 Delivery cost =", bg = "#6fa8dc", font=("candara 10 roman"))
             delivery_price.place(x=122, y=(yplace+110), anchor="center")
             total_price_msg = Label(thirdmenu, text= "Total Cost:", bg = "#6fa8dc", font=("candara 10 roman"))
             total_price_msg.place(x=140, y=(yplace+130), anchor="e")
-            total_price_ = Label(thirdmenu, text= "${}" .format (total_price), bg = "#6fa8dc", font=("candara 10 roman"))
+            total_price_ = Label(thirdmenu, text= "{}" .format (total_price), bg = "#6fa8dc", font=("candara 10 roman"))
             total_price_.place(x=140, y=(yplace+130), anchor="w")
-            c_instruct_msg = c_instruct.get()
-            c_instruct_msg = re.sub("(.{25})", "\\1\n", c_instruct_msg, 0, re.DOTALL)
-            customer_msg = Label(thirdmenu, text= "{}" .format (c_instruct_msg), bg = "#6fa8dc", font=("candara 10 roman"))
+            customer_msg = Label(thirdmenu, text= "{}" . format (c_instruct_msg), bg = "#6fa8dc", font=("candara 10 roman"))
             customer_msg.place(x=122, y=(yplace+150), anchor="n")
             d_instruct_msg = d_instruct.get()
             d_instruct_msg = re.sub("(.{25})", "\\1\n", d_instruct_msg, 0, re.DOTALL)
-            delivery_msg = Label(thirdmenu, text= "{}" .format (d_instruct_msg), bg = "#6fa8dc", font=("candara 10 roman"))
+            delivery_msg = Label(thirdmenu, text= "{}" . format (d_instruct_msg), bg = "#6fa8dc", font=("candara 10 roman"))
             delivery_msg.place(x=122, y=(yplace+210), anchor="n")
-            aao = Button(thirdmenu, text="""Accept Another
-            Order""", bg = "#cc4125", font=("candara 10 roman"), command=lambda: cancel_order())
-            aao.place(x=15, y=(yplace+270), width=105, height=37)
-            exit_ = Button(thirdmenu, text="Exit", bg = "#cc4125", font=("candara 10 roman"), command=lambda: quit())
-            exit_.place(x=230, y=(yplace+270), width=105, height=37, anchor = "ne")
             thirdmenu.geometry("245x362")
-
-    if pizzas_s == 2:
+            
         pizza1 = Label(thirdmenu, text= "{}" .format (pizzatext[0]), bg = "#6fa8dc", font=("candara 10 roman"))
         pizza1.place(x=140, y=(yplace+70), anchor="e")
-        price1 = Label(thirdmenu, text= "${}" .format (pricetext[0]), bg = "#6fa8dc", font=("candara 10 roman"))
+        price1 = Label(thirdmenu, text= "{}" .format (pricetext[0]), bg = "#6fa8dc", font=("candara 10 roman"))
         price1.place(x=140, y=(yplace+70), anchor="w")
-        pizza2 = Label(thirdmenu, text= "${}" .format (pizzatext[1]), bg = "#6fa8dc", font=("candara 10 roman"))
-        pizza2.place(x=140, y=(yplace+90), anchor="e")
-        price2 = Label(thirdmenu, text= "${}" .format (pricetext[1]), bg = "#6fa8dc", font=("candara 10 roman"))
-        price2.place(x=140, y=(yplace+90), anchor="w")
+        pizzas_price_msg = Label(thirdmenu, text= "{}" .format (totalprice_msg), bg = "#6fa8dc", font=("candara 10 roman"))
+        pizzas_price_msg.place(x=140, y=(yplace+90), anchor="e")
+        total_price_ = Label(thirdmenu, text= "{}" .format (pizzasprice), bg = "#6fa8dc", font=("candara 10 roman"))
+        total_price_.place(x=140, y=(yplace+90), anchor="w")
+        
+        if delivery_ == 1:
+            yplace = 140
 
+        aao = Button(thirdmenu, text="""Accept Another
+        Order""", bg = "#cc4125", font=("candara 10 roman"), command=lambda: cancel_order())
+        aao.place(x=15, y=(yplace+170), width=105, height=37)
+        exit_ = Button(thirdmenu, text="Exit", bg = "#cc4125", font=("candara 10 roman"), command=lambda: quit())
+        exit_.place(x=230, y=(yplace+170), width=105, height=37, anchor = "ne")
+
+    if pizzas_s == 2:
+        if delivery_ == 1:
+            yplace = 40
+            
         if delivery_ == 0:
-            total_price_msg = Label(thirdmenu, text= "${}" .format (totalprice_msg), bg = "#6fa8dc", font=("candara 10 roman"))
-            total_price_msg.place(x=140, y=(yplace+110), anchor="e")
-            total_price_ = Label(thirdmenu, text= "${}" .format (total_price), bg = "#6fa8dc", font=("candara 10 roman"))
-            total_price_.place(x=140, y=(yplace+110), anchor="w")
-            c_instruct_msg = c_instruct.get()
-            c_instruct_msg = re.sub("(.{25})", "\\1\n", c_instruct_msg, 0, re.DOTALL)
-            customer_msg = Label(thirdmenu, text= "{}" .format (c_instruct_msg), bg = "#6fa8dc", font=("candara 10 roman"))
+            customer_msg = Label(thirdmenu, text= "{}" . format (c_instruct_msg), bg = "#6fa8dc", font=("candara 10 roman"))
             customer_msg.place(x=122, y=(yplace+130), anchor="n")
-            aao = Button(thirdmenu, text="""Accept Another
-            Order""", bg = "#cc4125", font=("candara 10 roman"), command=lambda: cancel_order())
-            aao.place(x=15, y=(yplace+190), width=105, height=37)
-            exit_ = Button(thirdmenu, text="Exit", bg = "#cc4125", font=("candara 10 roman"), command=lambda: quit())
-            exit_.place(x=230, y=(yplace+190), width=105, height=37, anchor = "ne")
             thirdmenu.geometry("245x242")
 
         else:
-            pizzas_price_msg = Label(thirdmenu, text= "{}" .format (totalprice_msg), bg = "#6fa8dc", font=("candara 10 roman"))
-            pizzas_price_msg.place(x=140, y=(yplace+110), anchor="e")
-            pizzasprice = total_price-3
-            pizzas_price_ = Label(thirdmenu, text= "${}" .format (pizzasprice), bg = "#6fa8dc", font=("candara 10 roman"))
-            pizzas_price_.place(x=140, y=(yplace+110), anchor="w")
             delivery_price = Label(thirdmenu, text= "+ $3 Delivery cost =", bg = "#6fa8dc", font=("candara 10 roman"))
             delivery_price.place(x=122, y=(yplace+130), anchor="center")
             total_price_msg = Label(thirdmenu, text= "Total Cost:", bg = "#6fa8dc", font=("candara 10 roman"))
             total_price_msg.place(x=140, y=(yplace+150), anchor="e")
-            total_price_ = Label(thirdmenu, text= "${}" .format (total_price), bg = "#6fa8dc", font=("candara 10 roman"))
+            total_price_ = Label(thirdmenu, text= "{}" .format (total_price), bg = "#6fa8dc", font=("candara 10 roman"))
             total_price_.place(x=140, y=(yplace+150), anchor="w")
-            c_instruct_msg = c_instruct.get()
-            c_instruct_msg = re.sub("(.{25})", "\\1\n", c_instruct_msg, 0, re.DOTALL)
-            customer_msg = Label(thirdmenu, text= "{}" .format (c_instruct_msg), bg = "#6fa8dc", font=("candara 10 roman"))
+            customer_msg = Label(thirdmenu, text= "{}" . format (c_instruct_msg), bg = "#6fa8dc", font=("candara 10 roman"))
             customer_msg.place(x=122, y=(yplace+170), anchor="n")
             d_instruct_msg = d_instruct.get()
             d_instruct_msg = re.sub("(.{25})", "\\1\n", d_instruct_msg, 0, re.DOTALL)
-            delivery_msg = Label(thirdmenu, text= "{}" .format (d_instruct_msg), bg = "#6fa8dc", font=("candara 10 roman"))
+            delivery_msg = Label(thirdmenu, text= "{}" . format (d_instruct_msg), bg = "#6fa8dc", font=("candara 10 roman"))
             delivery_msg.place(x=122, y=(yplace+230), anchor="n")
-            aao = Button(thirdmenu, text="""Accept Another
-            Order""", bg = "#cc4125", font=("candara 10 roman"), command=lambda: cancel_order())
-            aao.place(x=15, y=(yplace+290), width=105, height=37)
-            exit_ = Button(thirdmenu, text="Exit", bg = "#cc4125", font=("candara 10 roman"), command=lambda: quit())
-            exit_.place(x=230, y=(yplace+290), width=105, height=37, anchor = "ne")
             thirdmenu.geometry("245x342")
 
-    if pizzas_s == 3:
         pizza1 = Label(thirdmenu, text= "{}" .format (pizzatext[0]), bg = "#6fa8dc", font=("candara 10 roman"))
         pizza1.place(x=140, y=(yplace+70), anchor="e")
-        price1 = Label(thirdmenu, text= "${}" .format (pricetext[0]), bg = "#6fa8dc", font=("candara 10 roman"))
+        price1 = Label(thirdmenu, text= "{}" .format (pricetext[0]), bg = "#6fa8dc", font=("candara 10 roman"))
         price1.place(x=140, y=(yplace+70), anchor="w")
         pizza2 = Label(thirdmenu, text= "{}" .format (pizzatext[1]), bg = "#6fa8dc", font=("candara 10 roman"))
         pizza2.place(x=140, y=(yplace+90), anchor="e")
-        price2 = Label(thirdmenu, text= "${}" .format (pricetext[1]), bg = "#6fa8dc", font=("candara 10 roman"))
+        price2 = Label(thirdmenu, text= "{}" .format (pricetext[1]), bg = "#6fa8dc", font=("candara 10 roman"))
         price2.place(x=140, y=(yplace+90), anchor="w")
-        pizza3 = Label(thirdmenu, text= "{}" .format (pizzatext[2]), bg = "#6fa8dc", font=("candara 10 roman"))
-        pizza3.place(x=140, y=(yplace+110), anchor="e")
-        price3 = Label(thirdmenu, text= "${}" .format (pricetext[2]), bg = "#6fa8dc", font=("candara 10 roman"))
-        price3.place(x=140, y=(yplace+110), anchor="w")
+        pizzas_price_msg = Label(thirdmenu, text= "{}" .format (totalprice_msg), bg = "#6fa8dc", font=("candara 10 roman"))
+        pizzas_price_msg.place(x=140, y=(yplace+110), anchor="e")
+        pizzas_price_ = Label(thirdmenu, text= "{}" .format (pizzasprice), bg = "#6fa8dc", font=("candara 10 roman"))
+        pizzas_price_.place(x=140, y=(yplace+110), anchor="w")
+
+        if delivery_ == 1:
+            yplace = 140
+
+        aao = Button(thirdmenu, text="""Accept Another
+        Order""", bg = "#cc4125", font=("candara 10 roman"), command=lambda: cancel_order())
+        aao.place(x=15, y=(yplace+190), width=105, height=37)
+        exit_ = Button(thirdmenu, text="Exit", bg = "#cc4125", font=("candara 10 roman"), command=lambda: quit())
+        exit_.place(x=230, y=(yplace+190), width=105, height=37, anchor = "ne")
+
+    if pizzas_s == 3:
+        if delivery_ == 1:
+            yplace = 40
 
         if delivery_ == 0:
-            total_price_msg = Label(thirdmenu, text= "{}" .format (totalprice_msg), bg = "#6fa8dc", font=("candara 10 roman"))
-            total_price_msg.place(x=140, y=(yplace+130), anchor="e")
-            total_price_ = Label(thirdmenu, text= "${}" .format (total_price), bg = "#6fa8dc", font=("candara 10 roman"))
-            total_price_.place(x=140, y=(yplace+130), anchor="w")
-            c_instruct_msg = c_instruct.get()
-            c_instruct_msg = re.sub("(.{25})", "\\1\n", c_instruct_msg, 0, re.DOTALL)
-            customer_msg = Label(thirdmenu, text= "{}" .format (c_instruct_msg), bg = "#6fa8dc", font=("candara 10 roman"))
+            customer_msg = Label(thirdmenu, text= "{}" . format (c_instruct_msg), bg = "#6fa8dc", font=("candara 10 roman"))
             customer_msg.place(x=122, y=(yplace+150), anchor="n")
-            aao = Button(thirdmenu, text="""Accept Another
-            Order""", bg = "#cc4125", font=("candara 10 roman"), command=lambda: cancel_order())
-            aao.place(x=15, y=(yplace+210), width=105, height=37)
-            exit_ = Button(thirdmenu, text="Exit", bg = "#cc4125", font=("candara 10 roman"), command=lambda: quit())
-            exit_.place(x=230, y=(yplace+210), width=105, height=37, anchor = "ne")
             thirdmenu.geometry("245x262")
             
         else:
-            pizzas_price_msg = Label(thirdmenu, text= "{}" .format (totalprice_msg), bg = "#6fa8dc", font=("candara 10 roman"))
-            pizzas_price_msg.place(x=140, y=(yplace+130), anchor="e")
-            pizzasprice = total_price-3
-            pizzas_price_ = Label(thirdmenu, text= "${}" .format (pizzasprice), bg = "#6fa8dc", font=("candara 10 roman"))
-            pizzas_price_.place(x=140, y=(yplace+130), anchor="w")
             delivery_price = Label(thirdmenu, text= "+ $3 Delivery cost =", bg = "#6fa8dc", font=("candara 10 roman"))
             delivery_price.place(x=122, y=(yplace+150), anchor="center")
             total_price_msg = Label(thirdmenu, text= "Total Cost:", bg = "#6fa8dc", font=("candara 10 roman"))
             total_price_msg.place(x=140, y=(yplace+170), anchor="e")
-            total_price_ = Label(thirdmenu, text= "${}" .format (total_price), bg = "#6fa8dc", font=("candara 10 roman"))
+            total_price_ = Label(thirdmenu, text= "{}" .format (total_price), bg = "#6fa8dc", font=("candara 10 roman"))
             total_price_.place(x=140, y=(yplace+170), anchor="w")
-            c_instruct_msg = c_instruct.get()
-            c_instruct_msg = re.sub("(.{25})", "\\1\n", c_instruct_msg, 0, re.DOTALL)
-            customer_msg = Label(thirdmenu, text= "{}" .format (c_instruct_msg), bg = "#6fa8dc", font=("candara 10 roman"))
+            customer_msg = Label(thirdmenu, text= "{}" . format (c_instruct_msg), bg = "#6fa8dc", font=("candara 10 roman"))
             customer_msg.place(x=122, y=(yplace+190), anchor="n")
             d_instruct_msg = d_instruct.get()
             d_instruct_msg = re.sub("(.{25})", "\\1\n", d_instruct_msg, 0, re.DOTALL)
-            delivery_msg = Label(thirdmenu, text= "{}" .format (d_instruct_msg), bg = "#6fa8dc", font=("candara 10 roman"))
+            delivery_msg = Label(thirdmenu, text= "{}" . format (d_instruct_msg), bg = "#6fa8dc", font=("candara 10 roman"))
             delivery_msg.place(x=122, y=(yplace+250), anchor="n")
-            aao = Button(thirdmenu, text="""Accept Another
-            Order""", bg = "#cc4125", font=("candara 10 roman"), command=lambda: cancel_order())
-            aao.place(x=15, y=(yplace+310), width=105, height=37)
-            exit_ = Button(thirdmenu, text="Exit", bg = "#cc4125", font=("candara 10 roman"), command=lambda: quit())
-            exit_.place(x=230, y=(yplace+310), width=105, height=37, anchor = "ne")
             thirdmenu.geometry("245x402")
-
-    if pizzas_s == 4:
+        
         pizza1 = Label(thirdmenu, text= "{}" .format (pizzatext[0]), bg = "#6fa8dc", font=("candara 10 roman"))
         pizza1.place(x=140, y=(yplace+70), anchor="e")
-        price1 = Label(thirdmenu, text= "${}" .format (pricetext[0]), bg = "#6fa8dc", font=("candara 10 roman"))
+        price1 = Label(thirdmenu, text= "{}" .format (pricetext[0]), bg = "#6fa8dc", font=("candara 10 roman"))
         price1.place(x=140, y=(yplace+70), anchor="w")
         pizza2 = Label(thirdmenu, text= "{}" .format (pizzatext[1]), bg = "#6fa8dc", font=("candara 10 roman"))
         pizza2.place(x=140, y=(yplace+90), anchor="e")
-        price2 = Label(thirdmenu, text= "${}" .format (pricetext[1]), bg = "#6fa8dc", font=("candara 10 roman"))
+        price2 = Label(thirdmenu, text= "{}" .format (pricetext[1]), bg = "#6fa8dc", font=("candara 10 roman"))
         price2.place(x=140, y=(yplace+90), anchor="w")
         pizza3 = Label(thirdmenu, text= "{}" .format (pizzatext[2]), bg = "#6fa8dc", font=("candara 10 roman"))
         pizza3.place(x=140, y=(yplace+110), anchor="e")
-        price3 = Label(thirdmenu, text= "${}" .format (pricetext[2]), bg = "#6fa8dc", font=("candara 10 roman"))
+        price3 = Label(thirdmenu, text= "{}" .format (pricetext[2]), bg = "#6fa8dc", font=("candara 10 roman"))
         price3.place(x=140, y=(yplace+110), anchor="w")
-        pizza4 = Label(thirdmenu, text= "{}" .format (pizzatext[3]), bg = "#6fa8dc", font=("candara 10 roman"))
-        pizza4.place(x=140, y=(yplace+130), anchor="e")
-        price4 = Label(thirdmenu, text= "${}" .format (pricetext[3]), bg = "#6fa8dc", font=("candara 10 roman"))
-        price4.place(x=140, y=(yplace+130), anchor="w")
-        
+        pizzas_price_msg = Label(thirdmenu, text= "{}" .format (totalprice_msg), bg = "#6fa8dc", font=("candara 10 roman"))
+        pizzas_price_msg.place(x=140, y=(yplace+130), anchor="e")
+        pizzas_price_ = Label(thirdmenu, text= "{}" .format (pizzasprice), bg = "#6fa8dc", font=("candara 10 roman"))
+        pizzas_price_.place(x=140, y=(yplace+130), anchor="w")
+
+        if delivery_ == 1:
+            yplace = 140
+
+        aao = Button(thirdmenu, text="""Accept Another
+        Order""", bg = "#cc4125", font=("candara 10 roman"), command=lambda: cancel_order())
+        aao.place(x=15, y=(yplace+210), width=105, height=37)
+        exit_ = Button(thirdmenu, text="Exit", bg = "#cc4125", font=("candara 10 roman"), command=lambda: quit())
+        exit_.place(x=230, y=(yplace+210), width=105, height=37, anchor = "ne")
+
+    if pizzas_s == 4:
+        if delivery_ == 1:
+            yplace = 40
+
         if delivery_ == 0:
-            total_price_msg = Label(thirdmenu, text= "{}" .format (totalprice_msg), bg = "#6fa8dc", font=("candara 10 roman"))
-            total_price_msg.place(x=140, y=(yplace+150), anchor="e")
-            total_price_ = Label(thirdmenu, text= "${}" .format (total_price), bg = "#6fa8dc", font=("candara 10 roman"))
-            total_price_.place(x=140, y=(yplace+150), anchor="w")
-            c_instruct_msg = c_instruct.get()
-            c_instruct_msg = re.sub("(.{25})", "\\1\n", c_instruct_msg, 0, re.DOTALL)
-            customer_msg = Label(thirdmenu, text= "{}" .format (c_instruct_msg), bg = "#6fa8dc", font=("candara 10 roman"))
+            customer_msg = Label(thirdmenu, text= "{}" . format (c_instruct_msg), bg = "#6fa8dc", font=("candara 10 roman"))
             customer_msg.place(x=122, y=(yplace+170), anchor="n")
-            aao = Button(thirdmenu, text="""Accept Another
-            Order""", bg = "#cc4125", font=("candara 10 roman"), command=lambda: cancel_order())
-            aao.place(x=15, y=(yplace+250), width=105, height=37)
-            exit_ = Button(thirdmenu, text="Exit", bg = "#cc4125", font=("candara 10 roman"), command=lambda: quit())
-            exit_.place(x=230, y=(yplace+250), width=105, height=37, anchor = "ne")
             thirdmenu.geometry("245x302")
 
         else:
-            pizzas_price_msg = Label(thirdmenu, text= "{}" .format (totalprice_msg), bg = "#6fa8dc", font=("candara 10 roman"))
-            pizzas_price_msg.place(x=140, y=(yplace+150), anchor="e")
-            pizzasprice = total_price-3
-            pizzas_price_ = Label(thirdmenu, text= "${}" .format (pizzasprice), bg = "#6fa8dc", font=("candara 10 roman"))
-            pizzas_price_.place(x=140, y=(yplace+150), anchor="w")
             delivery_price = Label(thirdmenu, text= "+ $3 Delivery cost =", bg = "#6fa8dc", font=("candara 10 roman"))
             delivery_price.place(x=122, y=(yplace+170), anchor="center")
             total_price_msg = Label(thirdmenu, text= "Total Cost:", bg = "#6fa8dc", font=("candara 10 roman"))
             total_price_msg.place(x=140, y=(yplace+190), anchor="e")
-            total_price_ = Label(thirdmenu, text= "${}" .format (total_price), bg = "#6fa8dc", font=("candara 10 roman"))
+            total_price_ = Label(thirdmenu, text= "{}" .format (total_price), bg = "#6fa8dc", font=("candara 10 roman"))
             total_price_.place(x=140, y=(yplace+190), anchor="w")
-            c_instruct_msg = c_instruct.get()
-            c_instruct_msg = re.sub("(.{25})", "\\1\n", c_instruct_msg, 0, re.DOTALL)
-            customer_msg = Label(thirdmenu, text= "{}" .format (c_instruct_msg), bg = "#6fa8dc", font=("candara 10 roman"))
+            customer_msg = Label(thirdmenu, text= "{}" . format (c_instruct_msg), bg = "#6fa8dc", font=("candara 10 roman"))
             customer_msg.place(x=122, y=(yplace+210), anchor="n")
             d_instruct_msg = d_instruct.get()
             d_instruct_msg = re.sub("(.{25})", "\\1\n", d_instruct_msg, 0, re.DOTALL)
-            delivery_msg = Label(thirdmenu, text= "{}" .format (d_instruct_msg), bg = "#6fa8dc", font=("candara 10 roman"))
+            delivery_msg = Label(thirdmenu, text= "{}" . format (d_instruct_msg), bg = "#6fa8dc", font=("candara 10 roman"))
             delivery_msg.place(x=122, y=(yplace+270), anchor="n")
-            aao = Button(thirdmenu, text="""Accept Another
-            Order""", bg = "#cc4125", font=("candara 10 roman"), command=lambda: cancel_order())
-            aao.place(x=15, y=(yplace+330), width=105, height=37)
-            exit_ = Button(thirdmenu, text="Exit", bg = "#cc4125", font=("candara 10 roman"), command=lambda: quit())
-            exit_.place(x=230, y=(yplace+330), width=105, height=37, anchor = "ne")
-            thirdmenu.geometry("245x422")
-            
-    if pizzas_s == 5:
+            thirdmenu.geometry("245x442")
+
         pizza1 = Label(thirdmenu, text= "{}" .format (pizzatext[0]), bg = "#6fa8dc", font=("candara 10 roman"))
         pizza1.place(x=140, y=(yplace+70), anchor="e")
-        price1 = Label(thirdmenu, text= "${}" .format (pricetext[0]), bg = "#6fa8dc", font=("candara 10 roman"))
+        price1 = Label(thirdmenu, text= "{}" .format (pricetext[0]), bg = "#6fa8dc", font=("candara 10 roman"))
         price1.place(x=140, y=(yplace+70), anchor="w")
         pizza2 = Label(thirdmenu, text= "{}" .format (pizzatext[1]), bg = "#6fa8dc", font=("candara 10 roman"))
         pizza2.place(x=140, y=(yplace+90), anchor="e")
-        price2 = Label(thirdmenu, text= "${}" .format (pricetext[1]), bg = "#6fa8dc", font=("candara 10 roman"))
+        price2 = Label(thirdmenu, text= "{}" .format (pricetext[1]), bg = "#6fa8dc", font=("candara 10 roman"))
         price2.place(x=140, y=(yplace+90), anchor="w")
         pizza3 = Label(thirdmenu, text= "{}" .format (pizzatext[2]), bg = "#6fa8dc", font=("candara 10 roman"))
         pizza3.place(x=140, y=(yplace+110), anchor="e")
-        price3 = Label(thirdmenu, text= "${}" .format (pricetext[2]), bg = "#6fa8dc", font=("candara 10 roman"))
+        price3 = Label(thirdmenu, text= "{}" .format (pricetext[2]), bg = "#6fa8dc", font=("candara 10 roman"))
         price3.place(x=140, y=(yplace+110), anchor="w")
         pizza4 = Label(thirdmenu, text= "{}" .format (pizzatext[3]), bg = "#6fa8dc", font=("candara 10 roman"))
         pizza4.place(x=140, y=(yplace+130), anchor="e")
-        price4 = Label(thirdmenu, text= "${}" .format (pricetext[3]), bg = "#6fa8dc", font=("candara 10 roman"))
+        price4 = Label(thirdmenu, text= "{}" .format (pricetext[3]), bg = "#6fa8dc", font=("candara 10 roman"))
         price4.place(x=140, y=(yplace+130), anchor="w")
-        pizza5 = Label(thirdmenu, text= "{}" .format (pizzatext[4]), bg = "#6fa8dc", font=("candara 10 roman"))
-        pizza5.place(x=140, y=(yplace+150), anchor="e")
-        price5 = Label(thirdmenu, text= "${}" .format (pricetext[4]), bg = "#6fa8dc", font=("candara 10 roman"))
-        price5.place(x=140, y=(yplace+150), anchor="w")
+        pizzas_price_msg = Label(thirdmenu, text= "{}" .format (totalprice_msg), bg = "#6fa8dc", font=("candara 10 roman"))
+        pizzas_price_msg.place(x=140, y=(yplace+150), anchor="e")
+        pizzas_price_ = Label(thirdmenu, text= "{}" .format (pizzasprice), bg = "#6fa8dc", font=("candara 10 roman"))
+        pizzas_price_.place(x=140, y=(yplace+150), anchor="w")
+
+        if delivery_ == 1:
+            yplace = 140
+
+        aao = Button(thirdmenu, text="""Accept Another
+        Order""", bg = "#cc4125", font=("candara 10 roman"), command=lambda: cancel_order())
+        aao.place(x=15, y=(yplace+250), width=105, height=37)
+        exit_ = Button(thirdmenu, text="Exit", bg = "#cc4125", font=("candara 10 roman"), command=lambda: quit())
+        exit_.place(x=230, y=(yplace+250), width=105, height=37, anchor = "ne")
+            
+    if pizzas_s == 5:
+        if delivery_ == 1:
+            yplace = 40
 
         if delivery_ == 0:
-            total_price_msg = Label(thirdmenu, text= "{}" .format (totalprice_msg), bg = "#6fa8dc", font=("candara 10 roman"))
-            total_price_msg.place(x=140, y=(yplace+170), anchor="e")
-            total_price_ = Label(thirdmenu, text= "${}" .format (total_price), bg = "#6fa8dc", font=("candara 10 roman"))
-            total_price_.place(x=140, y=(yplace+170), anchor="w")
-            c_instruct_msg = c_instruct.get()
-            c_instruct_msg = re.sub("(.{25})", "\\1\n", c_instruct_msg, 0, re.DOTALL)
-            customer_msg = Label(thirdmenu, text= "{}" .format (c_instruct_msg), bg = "#6fa8dc", font=("candara 10 roman"))
+            customer_msg = Label(thirdmenu, text= "{}" . format (c_instruct_msg), bg = "#6fa8dc", font=("candara 10 roman"))
             customer_msg.place(x=122, y=(yplace+190), anchor="n")
-            aao = Button(thirdmenu, text="""Accept Another
-            Order""", bg = "#cc4125", font=("candara 10 roman"), command=lambda: cancel_order())
-            aao.place(x=15, y=(yplace+250), width=105, height=37)
-            exit_ = Button(thirdmenu, text="Exit", bg = "#cc4125", font=("candara 10 roman"), command=lambda: quit())
-            exit_.place(x=230, y=(yplace+250), width=105, height=37, anchor = "ne")
-            exit_ = Button(thirdmenu, text="Exit", bg = "#cc4125", font=("candara 10 roman"), command=lambda: quit())
-            exit_.place(x=230, y=(yplace+250), width=105, height=37, anchor = "ne")
             thirdmenu.geometry("245x302")
 
         else:
-            pizzas_price_msg = Label(thirdmenu, text= "{}" .format (totalprice_msg), bg = "#6fa8dc", font=("candara 10 roman"))
-            pizzas_price_msg.place(x=140, y=(yplace+170), anchor="e")
-            pizzasprice = total_price-3
-            pizzas_price_ = Label(thirdmenu, text= "${}" .format (pizzasprice), bg = "#6fa8dc", font=("candara 10 roman"))
-            pizzas_price_.place(x=140, y=(yplace+170), anchor="w")
             delivery_price = Label(thirdmenu, text= "+ $3 Delivery cost =", bg = "#6fa8dc", font=("candara 10 roman"))
             delivery_price.place(x=122, y=(yplace+190), anchor="center")
             total_price_msg = Label(thirdmenu, text= "Total Cost:", bg = "#6fa8dc", font=("candara 10 roman"))
             total_price_msg.place(x=140, y=(yplace+210), anchor="e")
-            total_price_ = Label(thirdmenu, text= "${}" .format (total_price), bg = "#6fa8dc", font=("candara 10 roman"))
+            total_price_ = Label(thirdmenu, text= "{}" .format (total_price), bg = "#6fa8dc", font=("candara 10 roman"))
             total_price_.place(x=140, y=(yplace+210), anchor="w")
-            c_instruct_msg = c_instruct.get()
-            c_instruct_msg = re.sub("(.{25})", "\\1\n", c_instruct_msg, 0, re.DOTALL)
-            customer_msg = Label(thirdmenu, text= "{}" .format (c_instruct_msg), bg = "#6fa8dc", font=("candara 10 roman"))
+            customer_msg = Label(thirdmenu, text= "{}" . format (c_instruct_msg), bg = "#6fa8dc", font=("candara 10 roman"))
             customer_msg.place(x=122, y=(yplace+230), anchor="n")
             d_instruct_msg = d_instruct.get()
             d_instruct_msg = re.sub("(.{25})", "\\1\n", d_instruct_msg, 0, re.DOTALL)
-            delivery_msg = Label(thirdmenu, text= "{}" .format (d_instruct_msg), bg = "#6fa8dc", font=("candara 10 roman"))
+            delivery_msg = Label(thirdmenu, text= "{}" . format (d_instruct_msg), bg = "#6fa8dc", font=("candara 10 roman"))
             delivery_msg.place(x=0, y=(yplace+290), anchor="nw")
-            aao = Button(thirdmenu, text="""Accept Another
-            Order""", bg = "#cc4125", font=("candara 10 roman"), command=lambda: cancel_order())
-            aao.place(x=15, y=(yplace+350), width=105, height=37)
-            exit_ = Button(thirdmenu, text="Exit", bg = "#cc4125", font=("candara 10 roman"), command=lambda: quit())
-            exit_.place(x=230, y=(yplace+350), width=105, height=37, anchor = "ne")
-            thirdmenu.geometry("245x442")  
+            thirdmenu.geometry("245x442")
+
+        pizza1 = Label(thirdmenu, text= "{}" .format (pizzatext[0]), bg = "#6fa8dc", font=("candara 10 roman"))
+        pizza1.place(x=140, y=(yplace+70), anchor="e")
+        price1 = Label(thirdmenu, text= "{}" .format (pricetext[0]), bg = "#6fa8dc", font=("candara 10 roman"))
+        price1.place(x=140, y=(yplace+70), anchor="w")
+        pizza2 = Label(thirdmenu, text= "{}" .format (pizzatext[1]), bg = "#6fa8dc", font=("candara 10 roman"))
+        pizza2.place(x=140, y=(yplace+90), anchor="e")
+        price2 = Label(thirdmenu, text= "{}" .format (pricetext[1]), bg = "#6fa8dc", font=("candara 10 roman"))
+        price2.place(x=140, y=(yplace+90), anchor="w")
+        pizza3 = Label(thirdmenu, text= "{}" .format (pizzatext[2]), bg = "#6fa8dc", font=("candara 10 roman"))
+        pizza3.place(x=140, y=(yplace+110), anchor="e")
+        price3 = Label(thirdmenu, text= "{}" .format (pricetext[2]), bg = "#6fa8dc", font=("candara 10 roman"))
+        price3.place(x=140, y=(yplace+110), anchor="w")
+        pizza4 = Label(thirdmenu, text= "{}" .format (pizzatext[3]), bg = "#6fa8dc", font=("candara 10 roman"))
+        pizza4.place(x=140, y=(yplace+130), anchor="e")
+        price4 = Label(thirdmenu, text= "{}" .format (pricetext[3]), bg = "#6fa8dc", font=("candara 10 roman"))
+        price4.place(x=140, y=(yplace+130), anchor="w")
+        pizza5 = Label(thirdmenu, text= "{}" .format (pizzatext[4]), bg = "#6fa8dc", font=("candara 10 roman"))
+        pizza5.place(x=140, y=(yplace+150), anchor="e")
+        price5 = Label(thirdmenu, text= "{}" .format (pricetext[4]), bg = "#6fa8dc", font=("candara 10 roman"))
+        price5.place(x=140, y=(yplace+150), anchor="w")
+        pizzas_price_msg = Label(thirdmenu, text= "{}" .format (totalprice_msg), bg = "#6fa8dc", font=("candara 10 roman"))
+        pizzas_price_msg.place(x=140, y=(yplace+170), anchor="e")
+        pizzas_price_ = Label(thirdmenu, text= "{}" .format (pizzasprice), bg = "#6fa8dc", font=("candara 10 roman"))
+        pizzas_price_.place(x=140, y=(yplace+170), anchor="w")
+
+        if delivery_ == 1:
+            yplace = 140
+        
+        aao = Button(thirdmenu, text="""Accept Another
+        Order""", bg = "#cc4125", font=("candara 10 roman"), command=lambda: cancel_order())
+        aao.place(x=15, y=(yplace+250), width=105, height=37)
+        exit_ = Button(thirdmenu, text="Exit", bg = "#cc4125", font=("candara 10 roman"), command=lambda: quit())
+        exit_.place(x=230, y=(yplace+250), width=105, height=37, anchor = "ne")  
 
 def quit():
     root.destroy()
@@ -758,6 +721,9 @@ def cancel_order():
     global pizzas_s
     global multi
     global o_display_text
+    global pizzasprice
+    global yplace
+    yplace = 0
     lastselected = ""
     total_price = 0
     pizza_p = 0
@@ -769,6 +735,7 @@ def cancel_order():
     pizzas_s = 0
     multi = [0]*5
     o_display_text = ""
+    pizzasprice = 0
     if menus == 1:
         firstmenu.destroy()
     elif menus == 2:
